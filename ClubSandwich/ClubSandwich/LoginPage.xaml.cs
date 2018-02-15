@@ -14,7 +14,16 @@ namespace ClubSandwich
 	{
 		public LoginPage ()
 		{
+            
 			InitializeComponent ();
-		}
-	}
+		    sandwichImage.Source = ImageSource.FromResource("ClubSandwich.Resources.sandwich.jpg");
+
+        }
+
+	    void GoToTabbedPage(Object sender, ClickedEventArgs e)
+	    {
+	        this.Navigation.PushAsync(new MainTabbedPage());
+	    }
+
+    }
 }
