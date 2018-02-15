@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClubSandwich.Service.Query;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,14 @@ namespace ClubSandwich
 		public WeekPage ()
 		{
 			InitializeComponent ();
-		}
-	}
+            FetchData();
+        }
+
+        private async void FetchData()
+        {
+            var service = new WeeklyQuery();
+
+            var response = await service.Get();
+        }
+    }
 }
