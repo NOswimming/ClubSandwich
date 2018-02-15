@@ -14,7 +14,7 @@ namespace ClubSandwich.Service.Query
             _requestProvider = new RequestProvider.RequestProvider();
         }
 
-        public async Task<GraphResult<QueryModel>> ExpenseAccounts()
+        public async Task<GraphResult<QueryModel>> Get()
         {
             var query = @"query {
                                 me{
