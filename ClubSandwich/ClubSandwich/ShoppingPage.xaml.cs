@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ClubSandwich
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Shopping : ContentPage
+	public partial class ShoppingPage : ContentPage
 	{
-		public Shopping ()
+		public ShoppingPage ()
 		{
 			InitializeComponent ();
             this.Title = "Shopping Page";
