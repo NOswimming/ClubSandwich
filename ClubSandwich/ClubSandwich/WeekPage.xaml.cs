@@ -33,5 +33,10 @@ namespace ClubSandwich
                 //implementation
             }));
         }
+
+        public void LogOut_Clicked(Object sender, ClickedEventArgs e)
+        {
+            App.Current.MainPage = new LoginPage();
+        }
     }
 }

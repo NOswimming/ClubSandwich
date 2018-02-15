@@ -17,5 +17,10 @@ namespace ClubSandwich
 			InitializeComponent ();
             this.Title = "Shopping Page";
         }
-	}
+
+        public void LogOut_Clicked(Object sender, ClickedEventArgs e)
+        {
+            App.Current.MainPage = new LoginPage();
+        }
+    }
 }
