@@ -16,14 +16,17 @@ namespace ClubSandwich
 		public WeekPage ()
 		{
 			InitializeComponent ();
+            this.Title = "Week View Page";
             FetchData();
         }
 
         private async void FetchData()
         {
             var service = new WeeklyQuery();
-
-            var response = await service.Get();
+            var data = service.Get().ContinueWith(result => Device.BeginInvokeOnMainThread(() => 
+            {
+                //implementation
+            }));
         }
-    }
+	}
 }

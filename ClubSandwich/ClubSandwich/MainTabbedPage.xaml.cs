@@ -16,7 +16,7 @@ namespace ClubSandwich
         {
             InitializeComponent();
             Children.Add(new WeekPage());
-            Children.Add(new Shopping());
+            Children.Add(new ShoppingPage());
         }
     }
 }
