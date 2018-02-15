@@ -15,8 +15,13 @@ namespace ClubSandwich
 	{
 		public WeekPage ()
 		{
+            //var currentWeek = new ClubSandwich.Model.Week()
+            //{
+
+            //};
+
 			InitializeComponent ();
-            this.Title = "Week View Page";
+            
             FetchData();
         }
 
@@ -28,5 +33,5 @@ namespace ClubSandwich
                 //implementation
             }));
         }
-	}
+    }
 }

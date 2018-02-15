@@ -22,7 +22,8 @@ namespace ClubSandwich
 
 	    void GoToTabbedPage(Object sender, ClickedEventArgs e)
 	    {
-	        this.Navigation.PushAsync(new MainTabbedPage());
+            //this.Navigation.PushAsync(new MainTabbedPage());
+            App.Current.MainPage = new MainTabbedPage();
 	    }
 
     }
