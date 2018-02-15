@@ -13,10 +13,10 @@ namespace ClubSandwich
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new LoginPage());
-		}
+            MainPage = new NavigationPage(new LoginPage());
+        }
 
-		protected override void OnStart ()
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
