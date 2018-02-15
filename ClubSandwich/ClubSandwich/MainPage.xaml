@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ClubSandwich"
              x:Class="ClubSandwich.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
+	<Label Text="Welcome to Sandwich Club!" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
 
