@@ -15,6 +15,7 @@ namespace ClubSandwich
 		public WeekPage ()
 		{
 			InitializeComponent ();
-		}
+            this.Title = "Week View Page";
+        }
 	}
 }
