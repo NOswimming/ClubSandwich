@@ -4,9 +4,9 @@
              x:Class="ClubSandwich.LoginPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Image x:Name="sandwichImage"></Image>
+
+            <Button Text="Login with Facebook" BackgroundColor="Blue" TextColor="White" Clicked="GoToTabbedPage"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
