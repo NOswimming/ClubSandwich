@@ -13,7 +13,7 @@ namespace ClubSandwich
 		{
 			InitializeComponent();
 
-			MainPage = new ClubSandwich.MainPage();
+			MainPage = new NavigationPage(new LoginPage());
 		}
 
 		protected override void OnStart ()
