@@ -15,6 +15,7 @@ namespace ClubSandwich
 		public Shopping ()
 		{
 			InitializeComponent ();
-		}
+            this.Title = "Shopping Page";
+        }
 	}
 }
