@@ -7,6 +7,23 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ListView x:Name="ListView" IsPullToRefreshEnabled="True" RowHeight="50">
+            <ListView.Header>
+                <Grid HeightRequest="44">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Text="Date" />
+                    <Label Grid.Row="0" Grid.Column="1" FontAttributes="Bold" Text="Shopper Name" />
+                    <Label Grid.Row="0" Grid.Column="2" FontAttributes="Bold" Text="Cost" />
+                    <Label Grid.Row="0" Grid.Column="3" FontAttributes="Bold" Text="Paid" />
+                    <Label Grid.Row="0" Grid.Column="4" FontAttributes="Bold" Text="Owed" />
+                </Grid>
+            </ListView.Header>
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClubSandwich.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,12 @@ namespace ClubSandwich
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MembersPage : ContentPage
 	{
-		public MembersPage ()
+        public MemberPageViewModel vm;
+        public MembersPage ()
 		{
 			InitializeComponent ();
+            vm = new MemberPageViewModel();
+            BindingContext = vm;
         }
 
         public void LogOut_Clicked(Object sender, ClickedEventArgs e)
