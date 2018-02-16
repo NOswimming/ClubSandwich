@@ -9,16 +9,40 @@
         <ListView x:Name="weekList" ItemsSource="{Binding Weekly}" IsGroupingEnabled="True">
             <ListView.GroupHeaderTemplate>
                 <DataTemplate>
-                    <ViewCell>                        
-                        <Label Text="{Binding Title}"></Label>
-                    </ViewCell>
+                    <TextCell Text="{Binding Title}" />
                 </DataTemplate>                
             </ListView.GroupHeaderTemplate>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <Label Text="{Binding WeekId}" />                        
-                    </ViewCell>
+                    <ImageCell
+                        ImageSource="{Binding Shopper.AvatarUrl}"
+                        Text="{Binding Shopper.FirstName}"
+                        />
+                    <!--<ViewCell>
+                        <Grid x:Name="dataRowGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="22" />
+                            </Grid.RowDefinitions>
+                            
+                            <Image Source="{Binding Shopper.AvatarUrl}"
+                                   Grid.ColumnSpan="2"
+                                   Grid.RowSpan="2"
+                                   Grid.Row="0"
+                                   Grid.Column="0" />
+                            <Label Text="{Binding Shopper.FirstName}"
+                                   Grid.ColumnSpan="3" />
+                        </Grid>
+                    </ViewCell>-->
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
