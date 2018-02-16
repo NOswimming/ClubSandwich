@@ -25,11 +25,11 @@ namespace ClubSandwich.ViewModel
         {
             var service = new WeeklyQuery();
             var result = await service.Get().ConfigureAwait(false);
-
-            var newList = new ObservableCollection<WeeklyGroupListViewModel<Week>>();
-            var weeklist = result.Data.Weeks.OrderByDescending(m => m.WeekId).ToList();
-
-            Weekly = newList.AddList(weeklist);
+            if (result.Data != null)
+            {
+                var weeklist = result.Data.Weeks.OrderByDescending(m => m.WeekId).ToList();
+                Weekly = new ObservableCollection<WeeklyGroupListViewModel<Week>>().AddList(weeklist);
+            }
         }
 
 

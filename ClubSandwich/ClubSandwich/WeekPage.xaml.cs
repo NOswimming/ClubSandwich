@@ -1,10 +1,7 @@
-﻿using ClubSandwich.Model;
-using ClubSandwich.Service.GroupList;
-using ClubSandwich.Service.Query;
+﻿using ClubSandwich.Service.Query;
 using ClubSandwich.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +27,9 @@ namespace ClubSandwich
             BindingContext = vm;
         }
 
-
+        public void LogOut_Clicked(Object sender, ClickedEventArgs e)
+        {
+            App.Current.MainPage = new LoginPage();
+        }
     }
 }

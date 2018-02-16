@@ -7,6 +7,8 @@
             <Image x:Name="sandwichImage"></Image>
 
             <Button Text="Login with Facebook" BackgroundColor="Blue" TextColor="White" Clicked="GoToTabbedPage"/>
+
+            <Button Text="TEST Facebook OAuth" BackgroundColor="Red" TextColor="White" Clicked="Authenticate"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

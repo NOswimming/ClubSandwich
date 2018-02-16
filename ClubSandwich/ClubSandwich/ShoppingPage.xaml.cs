@@ -1,5 +1,4 @@
-﻿using ClubSandwich.Service.Query;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,16 +16,11 @@ namespace ClubSandwich
 		{
 			InitializeComponent ();
             this.Title = "Shopping Page";
-            FetchData();
         }
 
-        private async void FetchData()
+        public void LogOut_Clicked(Object sender, ClickedEventArgs e)
         {
-            var service = new ShoppingQuery();
-            var data = service.Get().ContinueWith(result => Device.BeginInvokeOnMainThread(() =>
-            {
-                //implementation
-            }));
+            App.Current.MainPage = new LoginPage();
         }
     }
 }
