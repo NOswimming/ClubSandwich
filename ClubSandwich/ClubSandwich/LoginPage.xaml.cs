@@ -30,21 +30,25 @@ namespace ClubSandwich
         {
             var authenticator = new AuthenticationService().GetAuthenticator();
 
-            authenticator.Completed += OnAuthCompleted;
-            authenticator.Error += OnAuthError;
+            authenticator.Success += OnAuthSuccess;
+            authenticator.Failed += OnAuthFailed;
             Navigation.PushModalAsync(authenticator.AuthenticationPage);
         }
 
-        void OnAuthCompleted(object sender, EventArgs eventArgs)
+        void OnAuthSuccess(object sender, EventArgs eventArgs)
         {
             // We presented the UI, so it's up to us to dimiss it on iOS.
             //DismissViewController(true, null);
+            Navigation.PopModalAsync();
             GoToTabbedPage(sender, null);
         }
 
-        void OnAuthError(object sender, EventArgs eventArgs)
+        void OnAuthFailed(object sender, EventArgs eventArgs)
         {
             // Do something with errors
+            Navigation.PopModalAsync();
+            DisplayAlert("Login Failed", "Facebook authentication failed ", "Okay");
+            
         }
     }
 }
