@@ -14,7 +14,7 @@ namespace ClubSandwich.Service.Query
             _requestProvider = new RequestProvider.RequestProvider();
         }
 
-        public async Task<GraphResult<QueryModel>> Get()
+        public async Task<GraphResult<WeeklyQueryModel>> Get()
         {
             var query = @"query {
                                 me{
@@ -54,7 +54,7 @@ namespace ClubSandwich.Service.Query
                                 }
                             }";
 
-            return await _requestProvider.Query<QueryModel>(query);
+            return await _requestProvider.Query<WeeklyQueryModel>(query);
         }
     }
 
