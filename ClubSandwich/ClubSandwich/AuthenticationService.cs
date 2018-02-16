@@ -1,14 +1,15 @@
 ﻿using System;
 using Xamarin.Auth;
+using Xamarin.Auth.XamarinForms;
 using Xamarin.Forms;
 
 namespace ClubSandwich
 {
-    class AuthenticationService : ContentPage
+    class AuthenticationService
     {
-        public void Authenticate()
+        public IAuthenticator GetAuthenticator()
         {
-            var authenticator = new OAuth2Authenticator
+            var oAuth2Authenticator = new OAuth2Authenticator
                 (
                     clientId: "1542347896056535",
                     scope: "",
@@ -17,10 +18,29 @@ namespace ClubSandwich
                     isUsingNativeUI: false
                 );
 
+            return new Authenticator(oAuth2Authenticator);
+        }
+
+    }
+
+    interface IAuthenticator
+    {
+        Page AuthenticationPage { get; }
+        EventHandler<EventArgs> Completed { get; set; }
+        EventHandler<EventArgs> Error { get; set; }
+    }
+
+    class Authenticator : IAuthenticator
+    {
+        public Page AuthenticationPage { get; }
+        public EventHandler<EventArgs> Completed { get; set; }
+        public EventHandler<EventArgs> Error { get; set; }
+
+        public Authenticator(Xamarin.Auth.Authenticator authenticator)
+        {
+            AuthenticationPage = new AuthenticatorPage(authenticator);
             authenticator.Completed += OnAuthCompleted;
             authenticator.Error += OnAuthError;
-
-            Navigation.PushModalAsync(new Xamarin.Auth.XamarinForms.AuthenticatorPage(authenticator));
         }
 
         void OnAuthCompleted(object sender, AuthenticatorCompletedEventArgs eventArgs)
@@ -37,12 +57,15 @@ namespace ClubSandwich
             {
                 // The user cancelled
             }
+
+            Completed.Invoke(sender, eventArgs);
         }
 
         void OnAuthError(object sender, AuthenticatorErrorEventArgs eventArgs)
         {
             // Do something with errors
-        }
 
+            Error.Invoke(sender, eventArgs);
+        }
     }
 }

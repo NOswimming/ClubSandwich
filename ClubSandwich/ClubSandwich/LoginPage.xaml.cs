@@ -25,5 +25,25 @@ namespace ClubSandwich
 	        this.Navigation.PushAsync(new MainTabbedPage());
 	    }
 
+        void Authenticate(Object sender, ClickedEventArgs e)
+        {
+            var authenticator = new AuthenticationService().GetAuthenticator();
+
+            authenticator.Completed += OnAuthCompleted;
+            authenticator.Error += OnAuthError;
+            Navigation.PushModalAsync(authenticator.AuthenticationPage);
+        }
+
+        void OnAuthCompleted(object sender, EventArgs eventArgs)
+        {
+            // We presented the UI, so it's up to us to dimiss it on iOS.
+            //DismissViewController(true, null);
+            this.Navigation.PushAsync(new MainTabbedPage());
+        }
+
+        void OnAuthError(object sender, EventArgs eventArgs)
+        {
+            // Do something with errors
+        }
     }
 }
