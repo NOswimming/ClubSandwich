@@ -26,15 +26,15 @@ namespace ClubSandwich
     interface IAuthenticator
     {
         Page AuthenticationPage { get; }
-        EventHandler<EventArgs> Completed { get; set; }
-        EventHandler<EventArgs> Error { get; set; }
+        EventHandler<EventArgs> Success { get; set; }
+        EventHandler<EventArgs> Failed { get; set; }
     }
 
     class Authenticator : IAuthenticator
     {
         public Page AuthenticationPage { get; }
-        public EventHandler<EventArgs> Completed { get; set; }
-        public EventHandler<EventArgs> Error { get; set; }
+        public EventHandler<EventArgs> Success { get; set; }
+        public EventHandler<EventArgs> Failed { get; set; }
 
         public Authenticator(Xamarin.Auth.Authenticator authenticator)
         {
@@ -52,20 +52,24 @@ namespace ClubSandwich
             {
                 // Use eventArgs.Account to do wonderful things
                 System.Console.WriteLine(eventArgs.Account.Username + eventArgs.Account.Properties);
+
+                Success.Invoke(sender, eventArgs);
             }
             else
             {
                 // The user cancelled
+                Failed.Invoke(sender, eventArgs);
             }
 
-            Completed.Invoke(sender, eventArgs);
+            
         }
 
         void OnAuthError(object sender, AuthenticatorErrorEventArgs eventArgs)
         {
             // Do something with errors
+            System.Console.WriteLine(eventArgs.Message);
 
-            Error.Invoke(sender, eventArgs);
+            Failed.Invoke(sender, eventArgs);
         }
     }
 }
