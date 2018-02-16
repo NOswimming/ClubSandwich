@@ -39,7 +39,7 @@ namespace ClubSandwich
         {
             // We presented the UI, so it's up to us to dimiss it on iOS.
             //DismissViewController(true, null);
-            this.Navigation.PushAsync(new MainTabbedPage());
+            GoToTabbedPage(sender, null);
         }
 
         void OnAuthError(object sender, EventArgs eventArgs)
