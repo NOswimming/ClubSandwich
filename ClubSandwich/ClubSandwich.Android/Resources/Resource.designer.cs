@@ -26,6 +26,8 @@ namespace ClubSandwich.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::PCLCrypto.Resource.String.ApplicationName = global::ClubSandwich.Droid.Resource.String.ApplicationName;
+			global::PCLCrypto.Resource.String.Hello = global::ClubSandwich.Droid.Resource.String.Hello;
 			global::Xamarin.Auth.Resource.Animation.slide_in_right = global::ClubSandwich.Droid.Resource.Animation.slide_in_right;
 			global::Xamarin.Auth.Resource.Animation.slide_out_left = global::ClubSandwich.Droid.Resource.Animation.slide_out_left;
 			global::Xamarin.Auth.Resource.Drawable.ic_arrow_back = global::ClubSandwich.Droid.Resource.Drawable.ic_arrow_back;
