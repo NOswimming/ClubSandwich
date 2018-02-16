@@ -15,8 +15,8 @@ namespace ClubSandwich
         public MainTabbedPage ()
         {
             InitializeComponent();
-            Children.Add(new WeekPage());
-            Children.Add(new ShoppingPage());
+            Children.Add(new NavigationPage(new WeekPage() { Title = "Week View Page" }) { Title = "Week View" });
+            Children.Add(new NavigationPage(new ShoppingPage() { Title = "Shopping Page" }) { Title = "Shopping" });
         }
     }
 }
