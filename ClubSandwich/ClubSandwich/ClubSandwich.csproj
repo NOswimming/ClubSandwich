@@ -6,10 +6,30 @@
 
   <ItemGroup>
     <None Remove="Resources\sandwich.jpg" />
+    <None Remove="Resources\SC_logo.png" />
+    <None Remove="Resources\SC_logo_1.png" />
+    <None Remove="Resources\SC_logo_2.png" />
+    <None Remove="Resources\SC_logo_3.png" />
+    <None Remove="Resources\SC_logo_4.png" />
+    <None Remove="Resources\SC_logo_5.png" />
+    <None Remove="Resources\SC_logo_6.png" />
+    <None Remove="Resources\SC_logo_7.png" />
+    <None Remove="Resources\SC_logo_8.png" />
+    <None Remove="Resources\SC_logo_9.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\sandwich.jpg" />
+    <EmbeddedResource Include="Resources\SC_logo.png" />
+    <EmbeddedResource Include="Resources\SC_logo_1.png" />
+    <EmbeddedResource Include="Resources\SC_logo_2.png" />
+    <EmbeddedResource Include="Resources\SC_logo_3.png" />
+    <EmbeddedResource Include="Resources\SC_logo_4.png" />
+    <EmbeddedResource Include="Resources\SC_logo_5.png" />
+    <EmbeddedResource Include="Resources\SC_logo_6.png" />
+    <EmbeddedResource Include="Resources\SC_logo_7.png" />
+    <EmbeddedResource Include="Resources\SC_logo_8.png" />
+    <EmbeddedResource Include="Resources\SC_logo_9.png" />
   </ItemGroup>
 
   <ItemGroup>

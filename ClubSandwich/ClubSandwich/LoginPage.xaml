@@ -4,11 +4,20 @@
              x:Class="ClubSandwich.LoginPage">
     <ContentPage.Content>
         <StackLayout>
-            <Image x:Name="sandwichImage"></Image>
+            <Grid x:Name="stackedImageGrid"
+                  HeightRequest="300">
+            </Grid>
 
-            <Button Text="Login with Facebook" BackgroundColor="Blue" TextColor="White" Clicked="GoToTabbedPage"/>
+            <Button x:Name="loginButton" 
+                    Text="Login with Facebook" 
+                    BackgroundColor="Blue" 
+                    TextColor="White" 
+                    Clicked="GoToTabbedPage" />
 
-            <Button Text="TEST Facebook OAuth" BackgroundColor="Red" TextColor="White" Clicked="Authenticate"/>
+            <!--<Button Text="TEST Facebook OAuth" 
+                    BackgroundColor="Red" 
+                    TextColor="White" 
+                    Clicked="Authenticate" />-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

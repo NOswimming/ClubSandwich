@@ -16,8 +16,8 @@ namespace ClubSandwich
 		{
             
 			InitializeComponent ();
-		    sandwichImage.Source = ImageSource.FromResource("ClubSandwich.Resources.sandwich.jpg");
 
+            AnimateLoginScreenAsync();
         }
 
 	    void GoToTabbedPage(Object sender, ClickedEventArgs e)
@@ -49,6 +49,36 @@ namespace ClubSandwich
             Navigation.PopModalAsync();
             DisplayAlert("Login Failed", "Facebook authentication failed ", "Okay");
             
+        }
+
+        async Task AnimateLoginScreenAsync()
+        {
+            int images = 9;
+            uint millisecondsToAnimate = 2000;
+
+
+            double a = 300;
+            double h = -Math.PI;
+            double b = images / Math.PI;
+            double k = 0;
+
+            var tasks = new Task[images];
+
+            for (int i = 1; i <= images; i++)
+            {
+                var image = new Image();
+                image.Source = ImageSource.FromResource($"ClubSandwich.Resources.SC_logo_{i}.png");
+                stackedImageGrid.Children.Add(image);
+                
+                // Offset based on sine-wave function.
+                image.TranslationY = -a * Math.Sin((i - h) / b) + k;
+                // Create animation and add to list
+                tasks[i] = image.TranslateTo(0, 0, millisecondsToAnimate);                
+            }
+
+            loginButton.Opacity = 0;
+            Task.WhenAny(tasks);
+            await loginButton.FadeTo(1.0, millisecondsToAnimate);
         }
     }
 }
