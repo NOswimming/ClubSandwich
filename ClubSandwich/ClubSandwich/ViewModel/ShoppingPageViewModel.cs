@@ -12,7 +12,7 @@ namespace ClubSandwich.ViewModel
     public class ShoppingPageViewModel : INotifyPropertyChanged
     {
         public bool IsRefreshing { get { return isRefreshing; } set { isRefreshing = value; OnPropertyChanged(nameof(IsRefreshing)); } }
-        public ObservableCollection<Week> Shopping { get { return shopping; } set { shopping = value; OnPropertyChanged(nameof(Shopping)); } }
+        public ObservableCollection<Shopping> Shopping { get { return shopping; } set { shopping = value; OnPropertyChanged(nameof(Shopping)); } }
 
         public ShoppingPageViewModel()
         {
@@ -25,8 +25,8 @@ namespace ClubSandwich.ViewModel
             var result = await service.Get().ConfigureAwait(false);
             if (result.Data != null)
             {
-                var weeklist = result.Data.Weeks.OrderByDescending(m => m.WeekId).ToList();
-                Shopping = new ObservableCollection<Week>(weeklist);
+                var items = result.Data.Weeks.OrderByDescending(m => m.WeekId).Select(x => new Shopping() { ShopperName = $"{x.Shopper.FirstName} {x.Shopper.LastName}", Cost = x.Cost, Owed = (x.Cost - x.Users.Sum(s => s.Paid)), Paid = x.Users.Sum(s => s.Paid) }).ToList();
+                Shopping = new ObservableCollection<Model.Shopping>(items); 
             }
 
         }
@@ -37,7 +37,7 @@ namespace ClubSandwich.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        ObservableCollection<Week> shopping;
+        ObservableCollection<Shopping> shopping;
         bool isRefreshing;
     }
 }
