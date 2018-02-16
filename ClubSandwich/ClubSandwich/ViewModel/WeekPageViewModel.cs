@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ClubSandwich.ViewModel
 {
@@ -17,14 +18,14 @@ namespace ClubSandwich.ViewModel
 
         public WeekPageViewModel()
         {
-            FetchData();
+            //FetchData();
         }
 
 
-        public async void FetchData()
+        public async Task FetchData()
         {
             var service = new WeeklyQuery();
-            var result = await service.Get().ConfigureAwait(false);
+            var result = await service.Get();
             if (result.Data != null)
             {
                 var weeklist = result.Data.Weeks.OrderByDescending(m => m.WeekId).ToList();

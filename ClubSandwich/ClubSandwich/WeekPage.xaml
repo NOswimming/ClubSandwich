@@ -6,10 +6,21 @@
         <ToolbarItem Text="Log Out" Clicked="LogOut_Clicked"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This is the Week View Page!"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView x:Name="weekList" ItemsSource="{Binding Weekly}" IsGroupingEnabled="True">
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>                        
+                        <Label Text="{Binding Title}"></Label>
+                    </ViewCell>
+                </DataTemplate>                
+            </ListView.GroupHeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding WeekId}" />                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
