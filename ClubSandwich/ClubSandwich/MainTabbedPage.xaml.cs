@@ -17,6 +17,7 @@ namespace ClubSandwich
             InitializeComponent();
             Children.Add(new NavigationPage(new WeekPage() { Title = "Week View Page" }) { Title = "Week View" });
             Children.Add(new NavigationPage(new ShoppingPage() { Title = "Shopping Page" }) { Title = "Shopping" });
+            Children.Add(new NavigationPage(new MembersPage() { Title = "Members Page" }) { Title = "Members" });
         }
     }
 }

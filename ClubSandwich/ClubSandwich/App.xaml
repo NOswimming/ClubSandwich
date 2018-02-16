@@ -5,6 +5,12 @@
 	<Application.Resources>
 
 		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BorderRadius" Value="50" />
+                <Setter Property="BorderWidth" Value="50" />
+            </Style>
+        </ResourceDictionary>
 
 	</Application.Resources>
 </Application>
