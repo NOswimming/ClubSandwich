@@ -12,11 +12,6 @@ namespace ClubSandwich
         public WeekPageViewModel vm;
 		public WeekPage ()
 		{
-            //var currentWeek = new ClubSandwich.Model.Week()
-            //{
-
-            //};
-
 			InitializeComponent ();
             vm = new WeekPageViewModel();
             BindingContext = vm;
@@ -25,6 +20,13 @@ namespace ClubSandwich
         public void LogOut_Clicked(Object sender, ClickedEventArgs e)
         {
             App.Current.MainPage = new LoginPage();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            await vm.FetchData();
         }
     }
 }
