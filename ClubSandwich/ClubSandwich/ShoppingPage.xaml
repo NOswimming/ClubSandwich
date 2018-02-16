@@ -6,10 +6,30 @@
         <ToolbarItem Text="Log Out" Clicked="LogOut_Clicked"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This is the Shopping Page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView x:Name="ListView" IsPullToRefreshEnabled="True" RowHeight="50">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"></Label>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding ShopperName}"></Label>
+                            <Label Grid.Row="0" Grid.Column="2" Text="{Binding Cost}"></Label>
+                            <Label Grid.Row="0" Grid.Column="3" Text="{Binding Paid}"></Label>
+                            <Label Grid.Row="0" Grid.Column="4" Text="{Binding Owed}"></Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

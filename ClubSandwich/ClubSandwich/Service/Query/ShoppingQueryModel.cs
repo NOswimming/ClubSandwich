@@ -5,10 +5,11 @@ using System.Text;
 
 namespace ClubSandwich.Service.Query
 {
-    public class QueryModel
+    public class ShoppingQueryModel
     {
         public User Me { get; set; }
         public User PrimaryShopper { get; set; }
         public List<Week> Weeks { get; set; }
+        public List<User> Users { get; set; }
     }
 }

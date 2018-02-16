@@ -1,4 +1,5 @@
 ﻿using ClubSandwich.Service.Query;
+using ClubSandwich.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace ClubSandwich
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WeekPage : ContentPage
 	{
+        public WeekPageViewModel vm;
 		public WeekPage ()
 		{
             //var currentWeek = new ClubSandwich.Model.Week()
@@ -21,17 +23,8 @@ namespace ClubSandwich
             //};
 
 			InitializeComponent ();
-            
-            FetchData();
-        }
-
-        private async void FetchData()
-        {
-            var service = new WeeklyQuery();
-            var data = service.Get().ContinueWith(result => Device.BeginInvokeOnMainThread(() => 
-            {
-                //implementation
-            }));
+            vm = new WeekPageViewModel();
+            BindingContext = vm;
         }
 
         public void LogOut_Clicked(Object sender, ClickedEventArgs e)

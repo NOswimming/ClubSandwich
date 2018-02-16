@@ -1,14 +1,15 @@
 ﻿using System;
 using Xamarin.Auth;
+using Xamarin.Auth.XamarinForms;
 using Xamarin.Forms;
 
 namespace ClubSandwich
 {
-    class AuthenticationService : ContentPage
+    class AuthenticationService
     {
-        public void Authenticate()
+        public IAuthenticator GetAuthenticator()
         {
-            var authenticator = new OAuth2Authenticator
+            var oAuth2Authenticator = new OAuth2Authenticator
                 (
                     clientId: "1542347896056535",
                     scope: "",
@@ -17,10 +18,29 @@ namespace ClubSandwich
                     isUsingNativeUI: false
                 );
 
+            return new Authenticator(oAuth2Authenticator);
+        }
+
+    }
+
+    interface IAuthenticator
+    {
+        Page AuthenticationPage { get; }
+        EventHandler<EventArgs> Success { get; set; }
+        EventHandler<EventArgs> Failed { get; set; }
+    }
+
+    class Authenticator : IAuthenticator
+    {
+        public Page AuthenticationPage { get; }
+        public EventHandler<EventArgs> Success { get; set; }
+        public EventHandler<EventArgs> Failed { get; set; }
+
+        public Authenticator(Xamarin.Auth.Authenticator authenticator)
+        {
+            AuthenticationPage = new AuthenticatorPage(authenticator);
             authenticator.Completed += OnAuthCompleted;
             authenticator.Error += OnAuthError;
-
-            Navigation.PushModalAsync(new Xamarin.Auth.XamarinForms.AuthenticatorPage(authenticator));
         }
 
         void OnAuthCompleted(object sender, AuthenticatorCompletedEventArgs eventArgs)
@@ -32,17 +52,24 @@ namespace ClubSandwich
             {
                 // Use eventArgs.Account to do wonderful things
                 System.Console.WriteLine(eventArgs.Account.Username + eventArgs.Account.Properties);
+
+                Success.Invoke(sender, eventArgs);
             }
             else
             {
                 // The user cancelled
+                Failed.Invoke(sender, eventArgs);
             }
+
+            
         }
 
         void OnAuthError(object sender, AuthenticatorErrorEventArgs eventArgs)
         {
             // Do something with errors
-        }
+            System.Console.WriteLine(eventArgs.Message);
 
+            Failed.Invoke(sender, eventArgs);
+        }
     }
 }
