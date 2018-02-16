@@ -15,7 +15,7 @@ namespace ClubSandwich.Service.Query
             _requestProvider = new RequestProvider.RequestProvider();
         }
 
-        public async Task<GraphResult<User>> GetAllUsers()
+        public async Task<GraphResult<UserQueryModel>> GetAllUsers()
         {
             var query = @"query {
                             users {
@@ -37,7 +37,7 @@ namespace ClubSandwich.Service.Query
                         }
                         ";
 
-            return await _requestProvider.Query<User>(query);
+            return await _requestProvider.Query<UserQueryModel>(query);
         }
     }
 }

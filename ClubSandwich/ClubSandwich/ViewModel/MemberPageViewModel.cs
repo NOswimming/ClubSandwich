@@ -1,35 +1,34 @@
 ﻿using ClubSandwich.Model;
 using ClubSandwich.Service.Query;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Text;
 
 namespace ClubSandwich.ViewModel
 {
-    public class ShoppingPageViewModel : INotifyPropertyChanged
+    public class MemberPageViewModel : INotifyPropertyChanged
     {
         public bool IsRefreshing { get { return isRefreshing; } set { isRefreshing = value; OnPropertyChanged(nameof(IsRefreshing)); } }
-        public ObservableCollection<Shopping> Shopping { get { return shopping; } set { shopping = value; OnPropertyChanged(nameof(Shopping)); } }
-
-        public ShoppingPageViewModel()
+        public ObservableCollection<User> Users { get { return users; } set { users = value; OnPropertyChanged(nameof(Users)); } }
+        public MemberPageViewModel()
         {
             FetchData();
         }
-
         public async void FetchData()
         {
-            var service = new ShoppingQuery();
-            var result = await service.Get();
+            var service = new UserQuery();
+            var result = await service.GetAllUsers();
             if (result.Data != null)
             {
-                var items = result.Data.Weeks.OrderByDescending(m => m.WeekId).Select(x => new Shopping() { ShopperName = $"{x.Shopper.FirstName} {x.Shopper.LastName}", Cost = x.Cost, Owed = (x.Cost - x.Users.Sum(s => s.Paid)), Paid = x.Users.Sum(s => s.Paid) }).ToList();
-                Shopping = new ObservableCollection<Model.Shopping>(items); 
+                var items = result.Data.Users.OrderBy(m => m.LastName).ToList();
+                Users = new ObservableCollection<User>(items);
             }
 
         }
+
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -37,7 +36,7 @@ namespace ClubSandwich.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        ObservableCollection<Shopping> shopping;
+        ObservableCollection<User> users;
         bool isRefreshing;
     }
 }
