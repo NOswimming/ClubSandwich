@@ -17,7 +17,7 @@ namespace ClubSandwich.Service.RequestProvider
         public RequestProvider()
         {
             _client = new HttpClient();
-            _client.DefaultRequestHeaders.Add("Sandwich-Auth-Token", "facebook EAAV6wdp26tcBAJbXu0vpVN7BZCXcY4qDO4ZBAHfccOslZBhxd6uzEibV3Ok0HM5ZC5cqb8LRDvU6Kmdm25D0KXEb7ak3qCrEZCFpmv0Wf447xCZBP3n5wJFmq46kpjl7YA7E3mWygNgh78H59ONJKiasPZAS6GxifGnGVmV5rTAhekJ9T3tCEJecJw183vy1s0Vh7WROzjBVAZDZD");
+            _client.DefaultRequestHeaders.Add("Sandwich-Auth-Token", "facebook EAAV6wdp26tcBAHPIuWXBNpYaEAZBPpyHaVg6xqTcVk7ZABrgJ6dsDMw1bh4gDa0KK2APA4QyASm6lqwUiYWymuhV3XxN9IZCUBwlDxzH3g6aZAqUgboJKZCDdJZA0Au9LuZBaVqPNO6lJeee00ciho6Vp9Y5edOSpQ0P05TZCWSW2yZAeRVtFPtiDAqNgqNCDZCSYcgAmUpd1dRwZDZD");
         }
 
         public async Task<GraphResult<T>> Query<T>(string query)
